@@ -1,0 +1,22 @@
+ELEGOO IR Remote Button Commands
+#define CMD_POWER       0x45  // Power
+#define CMD_VOL_UP      0x46  // Volume Up
+#define CMD_FUNC_STOP   0x47  // FUNC/STOP
+#define CMD_REWIND      0x44  // Rewind
+#define CMD_PLAY_PAUSE  0x40  // Play/Pause
+#define CMD_FAST_FORWARD 0x43 // Fast Forward
+#define CMD_DOWN_ARROW  0x07  // Down arrow
+#define CMD_VOL_DOWN    0x15  // Volume Down
+#define CMD_UP_ARROW    0x09  // Up arrow
+#define CMD_EQ          0x19  // EQ
+#define CMD_ST_REPT     0x0D  // ST/REPT
+#define CMD_0           0x16  // 0
+#define CMD_1           0x0C  // 1
+#define CMD_2           0x18  // 2
+#define CMD_3           0x5E  // 3
+#define CMD_4           0x08  // 4
+#define CMD_5           0x1C  // 5
+#define CMD_6           0x5A  // 6
+#define CMD_7           0x42  // 7
+#define CMD_8           0x52  // 8
+#define CMD_9           0x4A  // 9
