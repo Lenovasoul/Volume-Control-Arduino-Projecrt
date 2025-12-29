@@ -1,0 +1,46 @@
+#include <LiquidCrystal.h>
+#include <IRremote.hpp>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+#define IR_PIN 10
+
+#define CMD_VOL_UP   0x09
+#define CMD_VOL_DOWN 0x07
+
+int counter = 0; 
+unsigned long lastInputTime = 0; 
+const unsigned long inputDelay = 500; 
+
+void setup() {
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+  lcd.clear();
+  lcd.print("Volume:");
+  lcd.setCursor(0, 1);
+  lcd.print(counter);
+
+  IrReceiver.begin(IR_PIN, ENABLE_LED_FEEDBACK); 
+}
+
+void loop() {
+  if (IrReceiver.decode()) {
+    unsigned long currentTime = millis();
+
+    if (currentTime - lastInputTime >= inputDelay) {
+      uint8_t cmd = IrReceiver.decodedIRData.command;
+
+      if (cmd == CMD_VOL_UP && counter < 100) {
+        counter++;
+      } 
+      else if (cmd == CMD_VOL_DOWN && counter > 0) {
+        counter--;
+      }
+
+      lcd.setCursor(0, 1);
+      lcd.print("       "); //clear
+      lcd.setCursor(0, 1);
+      lcd.print(counter);
+      lastInputTime = currentTime; 
+    }
+    IrReceiver.resume();
+  }}
